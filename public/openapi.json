@@ -1,0 +1,626 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "REST API EBA gestion documents de projet",
+        "description": "Cette API REST EST une **application web pour la gestion électronique des documents liés aux projets d'EBA (e-Business Afrique).**",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/api"
+        }
+    ],
+    "tags": [
+        {
+            "name": "History requests actions",
+            "description": "Cette partie concerne la gestions des historiques entre un utilisateur et des documents et vice-versa."
+        },
+        {
+            "name": "User requests actions",
+            "description": "Cette section concerne la getion des utilisateurs."
+        },
+        {
+            "name": "Project requests actions",
+            "description": "Cette parties consiste en la gestion des projets."
+        },
+        {
+            "name": "Documents requests actions",
+            "description": "Cette section concerne les différentes actions qui seront menées sur les documents."
+        },
+        {
+            "name": "Forgot password requests actions",
+            "description": "Cette partie concerne la gestion des mots de passe utilisateurs."
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "CSRF": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "remember_token"
+            }
+        }
+    },
+    "security": [
+        {
+            "CSRF": []
+        }
+    ],
+    "paths": {
+        "/history/list": {
+            "get": {
+                "tags": [
+                    "History requests actions"
+                ],
+                "summary": "List history",
+                "description": "Affiche la liste complète des historiques.",
+                "security": [
+                    {
+                        "CSRF": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/history/1/document": {
+            "get": {
+                "tags": [
+                    "History requests actions"
+                ],
+                "summary": "List document history",
+                "description": "Affiche la liste complète des historiques des actions menées sur un document.",
+                "security": [
+                    {
+                        "CSRF": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/history/1/user": {
+            "get": {
+                "tags": [
+                    "History requests actions"
+                ],
+                "summary": "List user history",
+                "description": "Affiche la liste complète des historiques des actions menées par un utilisateurs sur les documents.",
+                "security": [
+                    {
+                        "CSRF": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/history/delete": {
+            "delete": {
+                "tags": [
+                    "History requests actions"
+                ],
+                "summary": "Delete histories",
+                "description": "Supprime tous l'historique.",
+                "security": [
+                    {
+                        "CSRF": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/user/create": {
+            "post": {
+                "tags": [
+                    "User requests actions"
+                ],
+                "summary": "Create user",
+                "description": "Créer un utilisateur.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "fullname": "ibraum",
+                                    "email": "ibraumodnokpro@gmail.com",
+                                    "password": "ibraum#1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "CSRF": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/user/login": {
+            "post": {
+                "tags": [
+                    "User requests actions"
+                ],
+                "summary": "Login user",
+                "description": "Connexion d'un utilisateur.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "email": "ibraumodnokpro@gmail.com",
+                                    "password": "ibraum#1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "CSRF": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/user/deactivate": {
+            "patch": {
+                "tags": [
+                    "User requests actions"
+                ],
+                "summary": "Deactivate user",
+                "description": "Désactiver un utilisateur en mettant son statut à 0;",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "user_id": 0
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "CSRF": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/user/activate": {
+            "patch": {
+                "tags": [
+                    "User requests actions"
+                ],
+                "summary": "Activate user",
+                "description": "Désactiver un utilisateur en mettant son statut à 1.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "user_id": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "CSRF": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/user/list": {
+            "get": {
+                "tags": [
+                    "User requests actions"
+                ],
+                "summary": "List users",
+                "description": "Affiche la liste de tous les utilisateurs dans la base de données.",
+                "security": [
+                    {
+                        "CSRF": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/user/logout": {
+            "delete": {
+                "tags": [
+                    "User requests actions"
+                ],
+                "summary": "Logout user",
+                "description": "Déconnecter un utilisateur connecté.",
+                "security": [
+                    {
+                        "CSRF": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/project/create": {
+            "post": {
+                "tags": [
+                    "Project requests actions"
+                ],
+                "summary": "Create project",
+                "description": "Créer un projet.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "libel": "bobilion",
+                                    "client_name": "ibraum",
+                                    "begin_date": "2023-12-03",
+                                    "user_id": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "CSRF": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/project/list": {
+            "get": {
+                "tags": [
+                    "Project requests actions"
+                ],
+                "summary": "List project",
+                "description": "Affiche la liste de tous les projets.",
+                "security": [
+                    {
+                        "CSRF": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/project/archive": {
+            "patch": {
+                "tags": [
+                    "Project requests actions"
+                ],
+                "summary": "Archive project",
+                "description": "Archiver un projet en utilisant le delete après activation du softdeletes dans son model.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "project_id": 0
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "CSRF": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/document/create": {
+            "post": {
+                "tags": [
+                    "Documents requests actions"
+                ],
+                "summary": "Create document",
+                "description": "Créer un document en l'associant à un projet et un utilisateur.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "file": "newfile.pdf",
+                                    "description": "Ceci est un fichier pdf de teste.",
+                                    "project_id": 0,
+                                    "user_id": 0
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "CSRF": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/document/1/info": {
+            "get": {
+                "tags": [
+                    "Documents requests actions"
+                ],
+                "summary": "Get document info",
+                "description": "Afficher les informations d'un document et son fichier s'il existe.",
+                "security": [
+                    {
+                        "CSRF": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/document/1/update": {
+            "patch": {
+                "tags": [
+                    "Documents requests actions"
+                ],
+                "summary": "Update document",
+                "description": "Modifier un document.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "file": "newfile.pdf",
+                                    "description": "Ceci est un fichier pdf de teste.",
+                                    "project_id": 0,
+                                    "user_id": 0
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "CSRF": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/document/1/download": {
+            "get": {
+                "tags": [
+                    "Documents requests actions"
+                ],
+                "summary": "Download document",
+                "description": "Télécharger le fichier d'un document.",
+                "security": [
+                    {
+                        "CSRF": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/document/list": {
+            "get": {
+                "tags": [
+                    "Documents requests actions"
+                ],
+                "summary": "List documents",
+                "description": "Affiche la liste de tous les documents associés aux projets.",
+                "security": [
+                    {
+                        "CSRF": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/password/reset": {
+            "post": {
+                "tags": [
+                    "Forgot password requests actions"
+                ],
+                "summary": "Reset user password",
+                "description": "Réinitialisation du mot de passe en utilisant le model User et la table password_reset_requests.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "email": "ibraumodnokpro@gmail.com",
+                                    "new_password": "ibr#12"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "CSRF": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/password/update": {
+            "patch": {
+                "tags": [
+                    "Forgot password requests actions"
+                ],
+                "summary": "Update user password",
+                "description": "Mise à jour du mot de passe en utilisant le model User et la table password_reset_requests.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "email": "ibraumodnokpro@gmail.com",
+                                    "new_password": "ibr#12",
+                                    "token": "dfmfmffrkflvm5556mlv,cv0-00q10-v-10mnmm"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "CSRF": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

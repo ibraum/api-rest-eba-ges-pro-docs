@@ -1,0 +1,720 @@
+{
+	"info": {
+		"_postman_id": "96d4c652-40f8-4dec-9255-5341e61ddabd",
+		"name": "REST API EBA gestion documents de projet",
+		"description": "Cette API REST EST une **application web pour la gestion électronique des documents liés aux projets d'EBA (e-Business Afrique).**",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37412949",
+		"_collection_link": "https://eba-rest-api-docs-managment.postman.co/workspace/EBA-REST-API-DOCS-MANAGMENT-Wor~746f6db9-b4f4-4c07-bf12-354f0a712105/collection/37412949-96d4c652-40f8-4dec-9255-5341e61ddabd?action=share&source=collection_link&creator=37412949"
+	},
+	"item": [
+		{
+			"name": "History requests actions",
+			"item": [
+				{
+					"name": "List history",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_ALL}}/history/list",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"history",
+								"list"
+							]
+						},
+						"description": "Affiche la liste complète des historiques."
+					},
+					"response": []
+				},
+				{
+					"name": "List document history",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_ALL}}/history/1/document",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"history",
+								"1",
+								"document"
+							]
+						},
+						"description": "Affiche la liste complète des historiques des actions menées sur un document."
+					},
+					"response": []
+				},
+				{
+					"name": "List user history",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_ALL}}/history/1/user",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"history",
+								"1",
+								"user"
+							]
+						},
+						"description": "Affiche la liste complète des historiques des actions menées par un utilisateurs sur les documents."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete histories",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_ALL}}/history/delete",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"history",
+								"delete"
+							]
+						},
+						"description": "Supprime tous l'historique."
+					},
+					"response": []
+				}
+			],
+			"description": "Cette partie concerne la gestions des historiques entre un utilisateur et des documents et vice-versa."
+		},
+		{
+			"name": "User requests actions",
+			"item": [
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullname\":\"ibraum\",\r\n    \"email\":\"ibraumodnokpro@gmail.com\",\r\n    \"password\":\"ibraum#1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_ALL}}/user/create",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"user",
+								"create"
+							]
+						},
+						"description": "Créer un utilisateur."
+					},
+					"response": []
+				},
+				{
+					"name": "Login user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"ibraumodnokpro@gmail.com\",\r\n    \"password\":\"ibraum#1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_ALL}}/user/login",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						},
+						"description": "Connexion d'un utilisateur."
+					},
+					"response": []
+				},
+				{
+					"name": "Deactivate user",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\":0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_ALL}}/user/deactivate",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"user",
+								"deactivate"
+							]
+						},
+						"description": "Désactiver un utilisateur en mettant son statut à 0;"
+					},
+					"response": []
+				},
+				{
+					"name": "Activate user",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_ALL}}/user/activate",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"user",
+								"activate"
+							]
+						},
+						"description": "Désactiver un utilisateur en mettant son statut à 1."
+					},
+					"response": []
+				},
+				{
+					"name": "List users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_ALL}}/user/list",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"user",
+								"list"
+							]
+						},
+						"description": "Affiche la liste de tous les utilisateurs dans la base de données."
+					},
+					"response": []
+				},
+				{
+					"name": "Logout user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_ALL}}/user/logout",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"user",
+								"logout"
+							]
+						},
+						"description": "Déconnecter un utilisateur connecté."
+					},
+					"response": []
+				}
+			],
+			"description": "Cette section concerne la getion des utilisateurs."
+		},
+		{
+			"name": "Project requests actions",
+			"item": [
+				{
+					"name": "Create project",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"libel\":\"bobilion\",\r\n    \"client_name\":\"ibraum\",\r\n    \"begin_date\":\"2023-12-03\",\r\n    \"user_id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_ALL}}/project/create",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"project",
+								"create"
+							]
+						},
+						"description": "Créer un projet."
+					},
+					"response": []
+				},
+				{
+					"name": "List project",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_ALL}}/project/list",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"project",
+								"list"
+							]
+						},
+						"description": "Affiche la liste de tous les projets."
+					},
+					"response": []
+				},
+				{
+					"name": "Archive project",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"project_id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_ALL}}/project/archive",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"project",
+								"archive"
+							]
+						},
+						"description": "Archiver un projet en utilisant le delete après activation du softdeletes dans son model."
+					},
+					"response": []
+				},
+				{
+					"name": "Unarchive project",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"project_id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_ALL}}/project/unarchive",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"project",
+								"unarchive"
+							]
+						},
+						"description": "Désarchiver un projet."
+					},
+					"response": []
+				},
+				{
+					"name": "Update project",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"libel\":\"kkk\",\r\n    \"client_name\":\"Rawo\",\r\n    \"begin_date\":\"2023-01-02\",\r\n    \"end_date\":\"2023-01-09\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_ALL}}/project/1/edit",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"project",
+								"1",
+								"edit"
+							]
+						},
+						"description": "Mise à jour d'un projet."
+					},
+					"response": []
+				}
+			],
+			"description": "Cette parties consiste en la gestion des projets."
+		},
+		{
+			"name": "Documents requests actions",
+			"item": [
+				{
+					"name": "Create document",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Autocar",
+									"contentType": "",
+									"type": "text"
+								},
+								{
+									"key": "path",
+									"type": "file",
+									"src": "/C:/Users/DELL/Documents/2_IntroductionModelisationObjet_DecouverteClassesObjet.pdf"
+								},
+								{
+									"key": "date_created",
+									"value": "2023-02-04",
+									"type": "text"
+								},
+								{
+									"key": "author",
+									"value": "couz",
+									"type": "text"
+								},
+								{
+									"key": "project_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{API_BASE_ALL}}/document/create",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"document",
+								"create"
+							]
+						},
+						"description": "Créer un document."
+					},
+					"response": []
+				},
+				{
+					"name": "Show document",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_ALL}}/document/1/show",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"document",
+								"1",
+								"show"
+							]
+						},
+						"description": "Afficher un document avec son id(project_id)."
+					},
+					"response": []
+				},
+				{
+					"name": "List documents",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{API_BASE_ALL}}/document/list",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"document",
+								"list"
+							]
+						},
+						"description": "Affiche la liste des documents non archivés."
+					},
+					"response": []
+				},
+				{
+					"name": "Update document",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_ALL}}/document/1/edit",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"document",
+								"1",
+								"edit"
+							]
+						},
+						"description": "Mise à jour d'un document."
+					},
+					"response": []
+				},
+				{
+					"name": "List archive document",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_BASE_ALL}}/document/list/archive",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"document",
+								"list",
+								"archive"
+							]
+						},
+						"description": "Affiche la liste des documents archivés."
+					},
+					"response": []
+				},
+				{
+					"name": "Archive document",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"document_id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_ALL}}/document/archive",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"document",
+								"archive"
+							]
+						},
+						"description": "Archiver un document."
+					},
+					"response": []
+				},
+				{
+					"name": "Unarchive document",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"document_id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_ALL}}/document/unarchive",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"document",
+								"unarchive"
+							]
+						},
+						"description": "Désarchiver un document."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete document",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"document_id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_ALL}}/document/delete",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"document",
+								"delete"
+							]
+						},
+						"description": "Supprimer un document."
+					},
+					"response": []
+				}
+			],
+			"description": "Cette section concerne les différentes actions qui seront menées sur les documents."
+		},
+		{
+			"name": "Forgot password requests actions",
+			"item": [
+				{
+					"name": "Send reset email link",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "ibraumodnokpro@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{API_BASE_ALL}}/password/email",
+							"host": [
+								"{{API_BASE_ALL}}"
+							],
+							"path": [
+								"password",
+								"email"
+							]
+						},
+						"description": "Envoyer un email de vérification sur l'email rentré par l'utilisateur."
+					},
+					"response": []
+				}
+			],
+			"description": "Cette partie concerne la gestion des mots de passe utilisateurs."
+		}
+	],
+	"variable": [
+		{
+			"key": "API_BASE",
+			"value": "http://127.0.0.1:8000/api/document"
+		},
+		{
+			"key": "API_BASE_USER",
+			"value": "http://127.0.0.1:8000/api/USER"
+		},
+		{
+			"key": "API_USER",
+			"value": "http://127.0.0.1:8000/api/user"
+		},
+		{
+			"key": "API_PROJECT",
+			"value": "http://127.0.0.1:8000/api/project"
+		},
+		{
+			"key": "API_BASE_DOCUMENT",
+			"value": "http://127.0.0.1:8000/api/document"
+		},
+		{
+			"key": "API_HISTORY",
+			"value": "http://127.0.0.1:8000/api/history"
+		},
+		{
+			"key": "API_BASE_FORGOT_PASSWORD",
+			"value": "http://127.0.0.1:8000/api/password"
+		}
+	]
+}
